@@ -5,12 +5,12 @@ import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 import jpabook.jpashop.domain.item.Item;
-import jpabook.jpashop.repository.ItemRepository;
-import jpabook.jpashop.repository.MemberRepository;
-import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final OrderQueryRepository orderQueryRepository;
     private final MemberRepository memberRepository;
     private final ItemRepository itemRepository;
 
@@ -49,6 +50,8 @@ public class OrderService {
         order.cancel();
     }
 
-//    public List<Order> findOrders(OrderSearch orderSearch) {
-//    }
+    public List<Order> findOrders(OrderSearch orderSearch) {
+//        return orderRepository.findAll();
+        return orderQueryRepository.findAll(orderSearch);
+    }
 }
