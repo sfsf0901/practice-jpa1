@@ -21,6 +21,9 @@ public class OrderQueryRepository {
     public OrderQueryRepository(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
+
+
+
     public List<Order> findAll(OrderSearch orderSearch) {
         return queryFactory
                 .selectFrom(order)
