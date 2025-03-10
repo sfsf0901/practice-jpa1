@@ -1,4 +1,4 @@
-package jpabook.jpashop.repository;
+package jpabook.jpashop.repository.order;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -14,15 +14,13 @@ import static jpabook.jpashop.domain.QMember.member;
 import static jpabook.jpashop.domain.QOrder.order;
 
 @Repository
-public class OrderQueryRepository {
+public class OrderQuerydslRepository {
 
     private final JPAQueryFactory queryFactory;
 
-    public OrderQueryRepository(EntityManager em) {
+    public OrderQuerydslRepository(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
-
-
 
     public List<Order> findAll(OrderSearch orderSearch) {
         return queryFactory
